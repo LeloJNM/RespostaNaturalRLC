@@ -4,12 +4,19 @@
 using namespace std;
  
 
+ 
+
+
+
 int main(){
 
 
 float R = 0, L = 0, C = 0;
-float sigma = 0, omegaZero = 0, omegaD = 0;
-int unidade = 0;
+float vC, iL;, //condiçoes iniciais
+float sigma = 0, omegaZero = 0, omegaD = 0; // relacionados ao tipo de resposta
+int unidade = 0; 
+float s1, s2; //raizes da equação 
+
 
 cout << "Digite o valor de R: ";
 cin >> R;
@@ -29,26 +36,44 @@ cout << "Digite a unidade de C: ";
 cin >> unidade;
 C = C * pow(10, unidade);
 
-cout << "Digite o valor de sigma: ";
-cin >> sigma;
-cout << "Digite a unidade de sigma: ";
-cin >> unidade;
-sigma = sigma * pow(10, unidade);
+sigma = 1/(2*R*C);
+omegaZero = 1/(sqrt(L*C));
+omegaD = sqrt((omegaZero*omegaZero) - (sigma*sigma));
 
-cout << "Digite o valor de omegaZero: ";
-cin >> omegaZero;
-cout << "Digite a unidade de omegaZero: ";
-cin >> unidade;
-omegaZero = omegaZero * pow(10, unidade);
+if (sigma>omegaZero){
+    cout << "Aurélio José e João"; << endl;
+    cout << "Este circuito é superamortecido" << endl;
+    s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    cout << "s1 = " << s1 << endl;
+    cout << "s2 = " << s2 << endl;
 
-cout << "Digite o valor de omegaD: ";
-cin >> omegaD;
-cout << "Digite a unidade de omegaD: ";
-cin >> unidade;
-omegaD = omegaD * pow(10, unidade);
+    cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s2*t) << endl;
+}
+else if (sigma<omegaZero){
+    cout << "Resposta exponencial crescente subamortecido" << endl;
+    s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    cout << "s1 = " << s1 << endl;
+    cout << "s2 = " << s2 << endl;
+
+    cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s2*t) << endl;
+}
+else if (sigma==omegaZero){
+    cout << "Resposta exponencial criticamente amortecido" << endl;
+    s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    cout << "s1 = " << s1 << endl;
+    cout << "s2 = " << s2 << endl;
+    cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s1*t) << endl;
+}
 
 
-cout << ""
+
+
+
+
+
 
 
 
