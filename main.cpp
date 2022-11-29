@@ -51,6 +51,7 @@ if (sigma>omegaZero){
     cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s2*t) << endl;
 }
 else if (sigma<omegaZero){
+    cout << "Aurélio José e João"; << endl;
     cout << "Resposta exponencial crescente subamortecido" << endl;
     s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
     s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
@@ -60,6 +61,7 @@ else if (sigma<omegaZero){
     cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s2*t) << endl;
 }
 else if (sigma==omegaZero){
+    cout << "Aurélio José e João"; << endl;
     cout << "Resposta exponencial criticamente amortecido" << endl;
     s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
     s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
