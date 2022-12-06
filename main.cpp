@@ -2,24 +2,24 @@
 #include <math.h>
 
 using namespace std;
- 
 
- 
+
+
 
 
 
 int main(){
 
 
-float R = 0, L = 0, C = 0;
-float vC, iL;//condiçoes iniciais
-float sigma = 0, omegaZero = 0, omegaD = 0; // relacionados ao tipo de resposta
-int unidade = 0; 
-float s1, s2; //raizes da equação 
-float iC; //corrente no capacitor
-float vL; //tensão no indutor
-float a1, a2;
-float t; //Tempo
+double R = 0, L = 0, C = 0;
+double vC, iL;//condiçoes iniciais
+double sigma = 0, omegaZero = 0, omegaD = 0; // relacionados ao tipo de resposta
+double s1, s2; //raizes da equação
+double iC; //corrente no capacitor no instante t
+double a1, a2;
+double b1,b2;
+double t; //Tempo
+int unidade = 0; //notação de engenharia
 
 // adquirindo valores  e as condiçoes iniciais
 
@@ -55,47 +55,59 @@ iL = iL * pow(10, unidade);
 
 //calculando sigma, omega zero e omega d
 
-sigma = 1/(2*R*C); 
+
+sigma = 1/(2*R*C);
 omegaZero = 1/(sqrt(L*C));
-omegaD = sqrt((omegaZero*omegaZero) - (sigma*sigma));
 
-iC = -iL; // sabe-se que a corrente no capacitor é o inverso da corrente no indutor
 
-//a1 + a2 = tensao inicial
+double sigmaQuadrado = sigma*sigma;
+double omegaZeroQuadrado = omegaZero*omegaZero;
+
+
+iC = iL - (vC/R); // a soma das correntes é igual a zero, logo a corrente no capacitor é igual a corrente no indutor menos a corrente no resistor
+
+//a1 + a2 = vC a1 + a2 é igual a tensao inicial para um instante t
 
 //calculando os casos de superamortecido para sigma > omegazero, subamortecido quando sigma < omegazero e criticamente amortecido quando sigma = omegazero
 
+double x = iC/C; //Para facilitar no calculo de ic/c que aparece para o calculo de A1 e B1
+
 if (sigma>omegaZero){
+    //
+
     cout << "Aurélio José e João" << endl;
-    cout << "Este circuito é superamortecido" << endl;
-    s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
-    s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
-    cout << "s1 = " << s1 << endl;
-    cout << "s2 = " << s2 << endl;
-    a2 = ((s1*vC)-vL) / (s1-s2);
-    a1 = vC - a2;
-    cout << "a1 = " << a1 << endl;
-    cout << "a2 = " << a2 << endl;
-    cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s2*t) << endl;
-}
-else if (sigma<omegaZero){
-    cout << "Aurélio José e João" << endl;
-    cout << "Resposta exponencial crescente subamortecido" << endl;
-    s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
-    s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
+    cout << "Tipo de resposta superamortecido" << endl;
+    s1 = -sigma + sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
+    s2 = -sigma - sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
     cout << "s1 = " << s1 << endl;
     cout << "s2 = " << s2 << endl;
 
-    cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s2*t) << endl;
+
+    a1 = (x-(s2*vC))/(s1-s2);
+    a2 = vC-a1;
+
+    cout << "a1 = " << a1 << endl;
+    cout << "a2 = " << a2 << endl;
+}
+else if (sigma<omegaZero){
+    cout << "Aurélio José e João" << endl;
+    cout << "Tipo de resposta subamortecido" << endl;
+
+    omegaD = sqrt((omegaZeroQuadrado) - (sigmaQuadrado));
+
+    b1 = vC;
+    b2 = (x-(b1*sigma))/omegaD;
+
+    cout << "B1 = " << b1 << endl;
+    cout << "B2 = " << b2 << endl;
 }
 else if (sigma==omegaZero){
     cout << "Aurélio José e João" << endl;
-    cout << "Resposta exponencial criticamente amortecido" << endl;
-    s1 = -sigma + sqrt((sigma*sigma) - (omegaZero*omegaZero));
-    s2 = -sigma - sqrt((sigma*sigma) - (omegaZero*omegaZero));
-    cout << "s1 = " << s1 << endl;
-    cout << "s2 = " << s2 << endl;
-    cout << "Resposta: " << vC*exp(s1*t) + iL*exp(s1*t) << endl;
+    cout << "Tipo de resposta criticamente amortecido" << endl;
+
+    cout << "A1 = " << a1 << endl;
+    cout << "A2 = " << a2 << endl;
+
 }
 
 
