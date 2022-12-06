@@ -3,11 +3,6 @@
 
 using namespace std;
 
-
-
-
-
-
 int main(){
 
 
@@ -58,9 +53,9 @@ iL = iL * pow(10, unidade);
 sigma = 1/(2*R*C);
 omegaZero = 1/(sqrt(L*C));
 
+
 double sigmaQuadrado = sigma*sigma;
 double omegaZeroQuadrado = omegaZero*omegaZero;
-
 
 iC = iL - (vC/R); // a soma das correntes é igual a zero, logo a corrente no capacitor é igual a corrente no indutor menos a corrente no resistor
 
@@ -68,7 +63,7 @@ iC = iL - (vC/R); // a soma das correntes é igual a zero, logo a corrente no ca
 
 //calculando os casos de superamortecido para sigma > omegazero, subamortecido quando sigma < omegazero e criticamente amortecido quando sigma = omegazero
 
-double x = iC/C; //Para facilitar no calculo de ic/c que aparece para o calculo de A1 e B1
+float x = iC/C; //Para facilitar no calculo de ic/c que aparece para o calculo de A1 e B1
 
 if (sigma>omegaZero){
     //
@@ -118,5 +113,4 @@ else if (sigma==omegaZero){
     cout << "O valor de A2 é: " << a2 << endl;
 
 }
-
 }
