@@ -14,6 +14,7 @@ double s1, s2; //raizes da equação
 double iC; //corrente no capacitor no instante t
 double a1, a2;
 double b1,b2;
+double tm, vtm;
 int unidade = 0; //notação de engenharia
 
 // adquirindo valores  e as condiçoes iniciais
@@ -75,7 +76,7 @@ if (sigma>omegaZero){
     s1 = -sigma + sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
     s2 = -sigma - sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
     cout << "O valor de sigma é: " << sigma << "Hz" << endl;
-    cout << "O valor de omega zero é: " << fixed << setprecision(2) << omegaZero << "rad/s" << endl;
+    cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "s1 = " << s1 << endl;
     cout << "s2 = " << s2 << endl;
 
@@ -83,8 +84,14 @@ if (sigma>omegaZero){
     a1 = (x-(s2*vC))/(s1-s2);
     a2 = vC-a1;
 
+    double y = (a1*s1)/(-a2*s2);
+    tm = log10(y)/s2-s1;
+    vtm = a1*exp(s1*tm) + a2*exp(s2*tm);
+
     cout << "O valor de a1 é: " << a1 << endl;
     cout << "O valor de a2 é: " << a2 << endl;
+    cout << "O valor de tm é: " << tm << endl;
+    cout << "O valor de vtm é: " << vtm << endl;
 }
 else if (sigma<omegaZero){
     cout << "Aurélio José e João" << endl;
@@ -95,11 +102,18 @@ else if (sigma<omegaZero){
     b1 = vC;
     b2 = (x-(b1*sigma))/omegaD;
 
+    double y = (a2*omegaZero - sigma*a1)/a1*omegaZero + sigma*a2;
+    tm = atan(y)/omegaZero;
+
+
+
     cout << "O valor de sigma é: " << sigma << "Hz" << endl;
-    cout << "O valor de omega zero é: " << fixed << setprecision(2) << omegaZero << "rad/s" << endl;
+    cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "O valor de omega d é: " << omegaD << "rad/s" << endl;
     cout << "O valor de B1 é: " << b1 << endl;
     cout << "O valor de B2 é: " << b2 << endl;
+    cout << "O valor de tm é: " << tm << endl;
+    cout << "O valor de vtm é:" << vtm << endl;
 }
 else if (sigma==omegaZero){
     cout << "Aurélio José e João" << endl;
@@ -111,10 +125,15 @@ else if (sigma==omegaZero){
     a1 = x + (sigma*vC);
     a2 = vC;
 
+    tm = (-a1 + sigma*a2)/ (-sigma*a1);
+
+
     cout << "O valor de sigma é: " << sigma << "Hz" << endl;
-    cout << "O valor de omega zero é: " << fixed << setprecision(2) << omegaZero << "rad/s" << endl;
+    cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "O valor de A1 é: " << a1 << endl;
     cout << "O valor de A2 é: " << a2 << endl;
+    cout << "O valor de tm é: " << tm << endl;
+    cout << "O valor de vtm é:" << vtm << endl;
 
     }
 }
