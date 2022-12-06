@@ -18,7 +18,6 @@ double s1, s2; //raizes da equação
 double iC; //corrente no capacitor no instante t
 double a1, a2;
 double b1,b2;
-double t; //Tempo
 int unidade = 0; //notação de engenharia
 
 // adquirindo valores  e as condiçoes iniciais
@@ -59,7 +58,6 @@ iL = iL * pow(10, unidade);
 sigma = 1/(2*R*C);
 omegaZero = 1/(sqrt(L*C));
 
-
 double sigmaQuadrado = sigma*sigma;
 double omegaZeroQuadrado = omegaZero*omegaZero;
 
@@ -77,17 +75,20 @@ if (sigma>omegaZero){
 
     cout << "Aurélio José e João" << endl;
     cout << "Tipo de resposta superamortecido" << endl;
+    
     s1 = -sigma + sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
     s2 = -sigma - sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
+    cout << "O valor de sigma é: " << sigma << endl;
+    cout << "O valor de omega zero é: " << omegaZero << endl;
     cout << "s1 = " << s1 << endl;
     cout << "s2 = " << s2 << endl;
 
 
     a1 = (x-(s2*vC))/(s1-s2);
     a2 = vC-a1;
-
-    cout << "a1 = " << a1 << endl;
-    cout << "a2 = " << a2 << endl;
+   
+    cout << "O valor de a1 é: " << a1 << endl;
+    cout << "O valor de a2 é: " << a2 << endl;
 }
 else if (sigma<omegaZero){
     cout << "Aurélio José e João" << endl;
@@ -98,26 +99,24 @@ else if (sigma<omegaZero){
     b1 = vC;
     b2 = (x-(b1*sigma))/omegaD;
 
-    cout << "B1 = " << b1 << endl;
-    cout << "B2 = " << b2 << endl;
+    cout << "O valor de sigma é: " << sigma << endl;
+    cout << "O valor de omega zero é: " << omegaZero << endl;
+    cout << "O valor de B1 é: " << b1 << endl;
+    cout << "O valor de B2 é: " << b2 << endl;
 }
 else if (sigma==omegaZero){
     cout << "Aurélio José e João" << endl;
     cout << "Tipo de resposta criticamente amortecido" << endl;
+    
+    a1 = x + (sigma*vC);
+    a2 = vC;
 
-    cout << "A1 = " << a1 << endl;
-    cout << "A2 = " << a2 << endl;
+
+    cout << "O valor de sigma é: " << sigma << endl;
+    cout << "O valor de omega zero é: " << omegaZero << endl;
+    cout << "O valor de A1 é: " << a1 << endl;
+    cout << "O valor de A2 é: " << a2 << endl;
 
 }
-
-
-
-
-
-
-
-
-
-
 
 }
