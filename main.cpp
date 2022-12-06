@@ -63,7 +63,7 @@ iC = iL - (vC/R); // a soma das correntes é igual a zero, logo a corrente no ca
 
 //calculando os casos de superamortecido para sigma > omegazero, subamortecido quando sigma < omegazero e criticamente amortecido quando sigma = omegazero
 
-float x = iC/C; //Para facilitar no calculo de ic/c que aparece para o calculo de A1 e B1
+double x = iC/C; //Para facilitar no calculo de ic/c que aparece para o calculo de A1 e B1
 
 if (sigma>omegaZero){
     //
