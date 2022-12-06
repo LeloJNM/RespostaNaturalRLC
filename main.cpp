@@ -104,8 +104,10 @@ else if (sigma<omegaZero){
 
     double y = (a2*omegaZero - sigma*a1)/a1*omegaZero + sigma*a2;
     tm = atan(y)/omegaZero;
-
-
+    while (tm<0){
+        tm += M_PI/omegaD;
+    }
+    vtm = exp(-sigma * tm) * (a1 * cos(omegaD *tm) + (a2*sin(omegaD * tm)));
 
     cout << "O valor de sigma é: " << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
