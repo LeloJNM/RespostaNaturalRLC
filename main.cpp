@@ -75,7 +75,8 @@ if (sigma>omegaZero){
 
     s1 = -sigma + sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
     s2 = -sigma - sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
-    cout << "O valor de sigma é: " << sigma << "Hz" << endl;
+    
+    cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "s1 = " << s1 << endl;
     cout << "s2 = " << s2 << endl;
@@ -102,14 +103,14 @@ else if (sigma<omegaZero){
     b1 = vC;
     b2 = (x-(b1*sigma))/omegaD;
 
-    double y = (a2*omegaZero - sigma*a1)/a1*omegaZero + sigma*a2;
+    double y = (b2*omegaZero - sigma*b1)/a1*omegaZero + sigma*b2;
     tm = atan(y)/omegaZero;
     while (tm<0){
-        tm += M_PI/omegaD;
+        tm += M_PI/omegaZero;
     }
-    vtm = exp(-sigma * tm) * (a1 * cos(omegaD *tm) + (a2*sin(omegaD * tm)));
+    vtm = exp(-sigma * tm) * (b1 * cos(omegaZero *tm) + (b2*sin(omegaZero * tm)));
 
-    cout << "O valor de sigma é: " << sigma << "Hz" << endl;
+    cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "O valor de omega d é: " << omegaD << "rad/s" << endl;
     cout << "O valor de B1 é: " << b1 << endl;
@@ -130,7 +131,7 @@ else if (sigma==omegaZero){
     tm = (-a1 + sigma*a2)/ (-sigma*a1);
 
 
-    cout << "O valor de sigma é: " << sigma << "Hz" << endl;
+    cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "O valor de A1 é: " << a1 << endl;
     cout << "O valor de A2 é: " << a2 << endl;
