@@ -83,7 +83,7 @@ double x = iC/C; //Para facilitar no calculo de ic/c que aparece para o calculo 
 if (sigma>omegaZero){
     //
 
-    cout << "Aurélio José e João" << endl;
+    cout << "Calculadora De RLC Paralelo" << endl << "Aurélio José e João" << endl;
     cout << "Tipo de resposta superamortecido" << endl;
 
     s1 = -sigma + sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
@@ -107,7 +107,7 @@ if (sigma>omegaZero){
     cout << "O valor de vtm é: " << fixed << setprecision(2)<< vtm << "V" << endl;
 }
 else if (sigma<omegaZero){
-    cout << "Aurélio José e João" << endl;
+    cout << "Calculadora De RLC Paralelo" << endl << "Aurélio José e João" << endl;
     cout << "Tipo de resposta subamortecido" << endl;
 
     omegaD = sqrt((omegaZeroQuadrado) - (sigmaQuadrado));
@@ -131,7 +131,7 @@ else if (sigma<omegaZero){
     cout << "O valor de vtm é:" << fixed << setprecision(2)<< vtm << endl;
 }
 else if (sigma==omegaZero){
-    cout << "Aurélio José e João" << endl;
+    cout << "Calculadora De RLC Paralelo" << endl << "Aurélio José e João" << endl;
     cout << "Tipo de resposta criticamente amortecido" << endl;
 
 
@@ -144,8 +144,8 @@ else if (sigma==omegaZero){
     a1 = x + (sigma*vC);
     a2 = vC;
 
-    tm = (((-a2 * sigma) / a1) + 1) / sigma;
-    vtm = (a1 * tm + a2) * (exp(-sigma * tm));
+    tm = (((-a2*sigma) / a1)+1)/sigma;
+    vtm = (a1*tm + a2)*(exp(-sigma*tm));
 
     cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
