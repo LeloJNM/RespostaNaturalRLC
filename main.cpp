@@ -4,6 +4,19 @@
 
 using namespace std;
 
+/*/ double ajustarUnidade(double i){
+    if(i>=1000 && i <= 999999.99){
+        return i/1000 + "k";
+    }else if(i>=1000000 && i<= 999999999){
+        return i/1000000 + "M";
+    }else if(i>=1000000000 && i<= 999999999999){
+        return i/1000000000 + "G";
+    }else if (i<=0 && i>= 0.001){
+        return i*1000 + "m";
+    }else if (i<=0.000001 && i>= 0.000000001){
+        return i*1000000 + "u";
+    }else if (i<=0.0000001 && i>= 0.000000001){
+*/
 int main(){
 
 
@@ -85,14 +98,13 @@ if (sigma>omegaZero){
     a1 = (x-(s2*vC))/(s1-s2);
     a2 = vC-a1;
 
-    double y = (a1*s1)/(-a2*s2);
-    tm = log10(y)/s2-s1;
+    tm = (log10((-(a2*s2))/(a1*s1))/log10(2.71828))/(s1-s2);
     vtm = a1*exp(s1*tm) + a2*exp(s2*tm);
 
     cout << "O valor de a1 é: " << a1 << endl;
     cout << "O valor de a2 é: " << a2 << endl;
-    cout << "O valor de tm é: " << tm << endl;
-    cout << "O valor de vtm é: " << vtm << endl;
+    cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
+    cout << "O valor de vtm é: " << vtm << "V" << endl;
 }
 else if (sigma<omegaZero){
     cout << "Aurélio José e João" << endl;
@@ -103,10 +115,10 @@ else if (sigma<omegaZero){
     b1 = vC;
     b2 = (x-(b1*sigma))/omegaD;
 
-    double y = (b2*omegaZero - sigma*b1)/a1*omegaZero + sigma*b2;
-    tm = atan(y)/omegaZero;
+    double y = (b2*omegaD - sigma*b1)/(b1*omegaD + sigma*b2);
+    tm = atan(y)/omegaD;
     while (tm<0){
-        tm += M_PI/omegaZero;
+        tm += M_PI/omegaD;
     }
     vtm = exp(-sigma * tm) * (b1 * cos(omegaZero *tm) + (b2*sin(omegaZero * tm)));
 
@@ -115,27 +127,31 @@ else if (sigma<omegaZero){
     cout << "O valor de omega d é: " << omegaD << "rad/s" << endl;
     cout << "O valor de B1 é: " << b1 << endl;
     cout << "O valor de B2 é: " << b2 << endl;
-    cout << "O valor de tm é: " << tm << endl;
+    cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
     cout << "O valor de vtm é:" << vtm << endl;
 }
 else if (sigma==omegaZero){
     cout << "Aurélio José e João" << endl;
     cout << "Tipo de resposta criticamente amortecido" << endl;
 
-    sigma = -sigma;//ja que não possui raiz, sigma e omega zero serao iguais e serão o -sigma da formula
-    omegaZero = sigma;
+
+    s1 = -sigma;
+    s2 = -sigma;
+
+    cout << "O valor de s1 é: " << s1 << endl;
+    cout << "O valor de s2 é: " << s2 << endl;
 
     a1 = x + (sigma*vC);
     a2 = vC;
 
-    tm = (-a1 + sigma*a2)/ (-sigma*a1);
-
+    tm = (((-a2 * sigma) / a1) + 1) / sigma;
+    vtm = (a1 * tm + a2) * (exp(-sigma * tm));
 
     cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "O valor de A1 é: " << a1 << endl;
     cout << "O valor de A2 é: " << a2 << endl;
-    cout << "O valor de tm é: " << tm << endl;
+    cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
     cout << "O valor de vtm é:" << vtm << endl;
 
     }
