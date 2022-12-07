@@ -91,8 +91,8 @@ if (sigma>omegaZero){
     
     cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
-    cout << "s1 = " << s1 << endl;
-    cout << "s2 = " << s2 << endl;
+    cout << "s1 = " << fixed << setprecision(3)<< s1 << endl;
+    cout << "s2 = " << fixed << setprecision(3)<< s2 << endl;
 
 
     a1 = (x-(s2*vC))/(s1-s2);
@@ -104,7 +104,7 @@ if (sigma>omegaZero){
     cout << "O valor de a1 é: " << a1 << endl;
     cout << "O valor de a2 é: " << a2 << endl;
     cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
-    cout << "O valor de vtm é: " << vtm << "V" << endl;
+    cout << "O valor de vtm é: " << fixed << setprecision(2)<< vtm << "V" << endl;
 }
 else if (sigma<omegaZero){
     cout << "Aurélio José e João" << endl;
@@ -128,7 +128,7 @@ else if (sigma<omegaZero){
     cout << "O valor de B1 é: " << b1 << endl;
     cout << "O valor de B2 é: " << b2 << endl;
     cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
-    cout << "O valor de vtm é:" << vtm << endl;
+    cout << "O valor de vtm é:" << fixed << setprecision(2)<< vtm << endl;
 }
 else if (sigma==omegaZero){
     cout << "Aurélio José e João" << endl;
@@ -152,7 +152,7 @@ else if (sigma==omegaZero){
     cout << "O valor de A1 é: " << a1 << endl;
     cout << "O valor de A2 é: " << a2 << endl;
     cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
-    cout << "O valor de vtm é:" << vtm << endl;
+    cout << "O valor de vtm é:" << fixed << setprecision(2) << vtm << endl;
 
     }
 }
