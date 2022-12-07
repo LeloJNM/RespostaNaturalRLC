@@ -4,19 +4,6 @@
 
 using namespace std;
 
-/*/ double ajustarUnidade(double i){
-    if(i>=1000 && i <= 999999.99){
-        return i/1000 + "k";
-    }else if(i>=1000000 && i<= 999999999){
-        return i/1000000 + "M";
-    }else if(i>=1000000000 && i<= 999999999999){
-        return i/1000000000 + "G";
-    }else if (i<=0 && i>= 0.001){
-        return i*1000 + "m";
-    }else if (i<=0.000001 && i>= 0.000000001){
-        return i*1000000 + "u";
-    }else if (i<=0.0000001 && i>= 0.000000001){
-*/
 int main(){
 
 
@@ -88,7 +75,7 @@ if (sigma>omegaZero){
 
     s1 = -sigma + sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
     s2 = -sigma - sqrt((sigmaQuadrado) - (omegaZeroQuadrado));
-    
+
     cout << "O valor de sigma é: " << fixed << setprecision(3) << sigma << "Hz" << endl;
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "s1 = " << fixed << setprecision(3)<< s1 << endl;
@@ -103,8 +90,8 @@ if (sigma>omegaZero){
 
     cout << "O valor de a1 é: " << a1 << endl;
     cout << "O valor de a2 é: " << a2 << endl;
-    cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
-    cout << "O valor de vtm é: " << fixed << setprecision(2)<< vtm << "V" << endl;
+    cout << "O valor de tm é: " << fixed << setprecision(0) << tm*1000 << "ms" << endl;
+    cout << "O valor de vtm é: " << fixed << setprecision(2)<< vtm << "v" << endl;
 }
 else if (sigma<omegaZero){
     cout << "Calculadora De RLC Paralelo" << endl << "Aurélio José e João" << endl;
@@ -118,7 +105,7 @@ else if (sigma<omegaZero){
     double y = (b2*omegaD - sigma*b1)/(b1*omegaD + sigma*b2);
     tm = atan(y)/omegaD;
     while (tm<0){
-        tm += M_PI/omegaD;
+        tm += (M_PI/omegaD);
     }
     vtm = exp(-sigma * tm) * (b1 * cos(omegaZero *tm) + (b2*sin(omegaZero * tm)));
 
@@ -127,8 +114,8 @@ else if (sigma<omegaZero){
     cout << "O valor de omega d é: " << omegaD << "rad/s" << endl;
     cout << "O valor de B1 é: " << b1 << endl;
     cout << "O valor de B2 é: " << b2 << endl;
-    cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
-    cout << "O valor de vtm é:" << fixed << setprecision(2)<< vtm << endl;
+    cout << "O valor de tm é: " << fixed << setprecision(0) << tm*1000 << "ms" << endl;
+    cout << "O valor de vtm é:" << fixed << setprecision(2)<< vtm << "v" << endl;
 }
 else if (sigma==omegaZero){
     cout << "Calculadora De RLC Paralelo" << endl << "Aurélio José e João" << endl;
@@ -151,8 +138,8 @@ else if (sigma==omegaZero){
     cout << "O valor de omega zero é: " << fixed << setprecision(3) << omegaZero << "rad/s" << endl;
     cout << "O valor de A1 é: " << a1 << endl;
     cout << "O valor de A2 é: " << a2 << endl;
-    cout << "O valor de tm é: " << fixed << setprecision(10) << tm << "s" << endl;
-    cout << "O valor de vtm é:" << fixed << setprecision(2) << vtm << endl;
+    cout << "O valor de tm é: " << fixed << setprecision(0) << tm*1000 << "ms" << endl;
+    cout << "O valor de vtm é:" << fixed << setprecision(2) << vtm << "v"  << endl;
 
     }
 }
